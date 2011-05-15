@@ -1,0 +1,13 @@
+{
+  "name": "defensio",
+  "description": "node.js library to communicate with Defensio's API",
+  "version": "0.0.1",
+  "author": "Camilo Lopez",
+  "repository": {
+      "type": "git",
+      "url":  "http://github.com/camilo/defensio.js.git"
+  },
+  "engine": ["node>=0.45"],
+  "main": "defensio",
+  "dependencies" : {'request': '>=1.9.5'}
+}
