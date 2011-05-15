@@ -7,7 +7,8 @@ var f  = function(HTTPstatus, response){console.log([HTTPstatus, response])}
 var df = d.defensio('omg');
 df.getUser(f);
 
-var df = d.defensio('79f5b2a63dcf');
+//Set a real key here get one from http://www.defensio.com if necessary
+var df = d.defensio('YOUR_KEY');
 
 df.getUser(f);
 df.postDocument({content: 'omg', type: 'comment'}, function(code, response){
