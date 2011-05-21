@@ -8,7 +8,7 @@ var df = d.defensio('omg');
 df.getUser(f);
 
 //Set a real key here get one from http://www.defensio.com if necessary
-var df = d.defensio('YOUR_KEY');
+var df = d.defensio('API_KEY_HERE');
 
 df.getUser(f);
 df.postDocument({content: 'omg', type: 'comment'}, function(code, response){

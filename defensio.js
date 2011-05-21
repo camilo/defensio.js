@@ -8,7 +8,7 @@ var defensio = function(apiKey, callbackURL, options){
   this.host          = 'api.defensio.com';
   this.version       = '2.0';
   this.platform      = 'node.js';
-  this.defaultClient = 'Defensio for node.js|0.1|Camilo Lopez|camilo@camilolopez.com';
+  this.defaultClient = 'Defensio for node.js|0.1.1|Camilo Lopez|camilo@camilolopez.com';
   this.resources_and_methods = {
                      'documents'        : ['GET', 'POST', 'PUT'],
                      'users'            : ['GET'],
@@ -63,24 +63,29 @@ var defensio = function(apiKey, callbackURL, options){
     }
 
     path = this.buildPath(resource, method, signature);
+
+    req_opts = {method : method};
     
     uri  = "http://" + this.host + path;
 
-    req_opts = {uri : uri, method: method }
-
     /* For some reason body does not seem to be properly
      * passed properly on PUT using the _method=PUT trick
-     * instead
-     */
+     * instead */
     if(method == 'POST' || method == 'PUT'){
       req_opts.method = 'POST';
+
       if(method == 'PUT')
         defensio_arguments['_method'] = 'PUT';
+
       req_opts['body'] = querystring.stringify(defensio_arguments);
     } else {
+
       uri = uri + '?' + querystring.stringify(defensio_arguments);
     }
     
+    req_opts.uri = uri;
+
+
     request(req_opts, function(error, response, body){
       if(!error && callback){
         callback(response.statusCode, JSON.parse(body));
@@ -121,8 +126,8 @@ var defensio = function(apiKey, callbackURL, options){
     this.doRequest('documents', 'PUT', args, callback); 
   }
 
-  this.getBasicStats = function(args, callback){
-    this.doRequest('basic-stats', 'GET', args, callback); 
+  this.getBasicStats = function(callback){
+    this.doRequest('basic-stats', 'GET', {} , callback); 
   }
 
   this.postProfanityFilter = function(args, callback){
