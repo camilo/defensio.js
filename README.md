@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/camilo/defensio.js.png)](http://travis-ci.org/camilo/defensio.js)
 # Defensio -- full featured node.js wrapper for Defensio SPAM filtering service V 2.0
 
 ## Usage
